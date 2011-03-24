@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ezekiel Templin"]
   s.email       = ["ezkl@me.com"]
-  s.homepage    = "http://capit.github.com"
+  s.homepage    = "http://capit.mdvlrb.com"
   s.summary     = %q{Easy screen captures with the help of CutyCapt}
   s.description = %q{Easy screen captures with the help of CutyCapt}
 
