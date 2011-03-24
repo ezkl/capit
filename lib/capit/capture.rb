@@ -18,7 +18,8 @@ module CapIt
     attr_reader   :url
     
     
-    attr_accessor :folder, :filename, :user_agent, :max_wait, :delay
+    attr_accessor :folder, :filename, :user_agent, :max_wait, 
+                  :delay, :output
     
     # Initialize a new Capture
     #
@@ -46,10 +47,25 @@ module CapIt
     # 
     def capture      
       `#{capture_command}`
-      FileTest.exists?("#{@folder}/#{@filename}")
+      successful?
     end
 
     protected
+    
+      # Determines whether the capture was successful
+      # by checking for the existence of the output file.
+      # Sets {@output} if true.
+      #
+      # @return [true, false]
+      #
+      def successful?
+        if FileTest.exists?("#{@folder}/#{@filename}")
+          @output = "#{@folder}/#{@filename}"
+          true
+        else
+          false
+        end  
+      end
       
       # Produces the command used to run CutyCapt. 
       # 
@@ -70,7 +86,6 @@ module CapIt
           cmd
         end        
       end
-      
       
       # Uses RUBY_PLATFORM to determine the operating system.
       # Not foolproof, but good enough for the time being.
