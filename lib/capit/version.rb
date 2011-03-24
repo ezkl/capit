@@ -1,3 +1,9 @@
+# encoding: UTF-8
+
 module CapIt
-  VERSION = "0.1.1"
+  
+  # 
+  # The version number
+  # 
+  VERSION = "0.1.2"
 end
