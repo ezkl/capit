@@ -2,3 +2,6 @@
 .bundle
 Gemfile.lock
 pkg/*
+doc/*
+.yardoc
+.DS_STORE
