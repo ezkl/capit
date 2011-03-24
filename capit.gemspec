@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.email       = ["ezkl@me.com"]
   s.homepage    = "http://github.com/meadvillerb/capit"
   s.summary     = %q{Easy screen captures with the help of CutyCapt}
-  s.description = %q{Easy screen captures with the help of CutyCapt}
+  s.description = %q{ Easy screen captures with the help of CutyCapt. Very much a WIP. 
+                      Install instructions, examples, etc coming very soon. }
 
   s.files         = `git ls-files`.split("\n")
   # s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
