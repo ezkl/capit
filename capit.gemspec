@@ -8,13 +8,14 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ezekiel Templin"]
   s.email       = ["ezkl@me.com"]
+  s.date        = %q{2011-03-24}
   s.homepage    = "http://github.com/meadvillerb/capit"
   s.summary     = %q{Easy screen captures with the help of CutyCapt}
-  s.description = %q{ Easy screen captures with the help of CutyCapt. Very much a WIP. 
-                      Install instructions, examples, etc coming very soon. }
-
+  s.description = %q{CapIt provides a simple Ruby interface to Björn Höhrmann's CutyCapt.}
+  s.extra_rdoc_files = [
+    "README.md"
+  ]
   s.files         = `git ls-files`.split("\n")
-  # s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  # s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.add_runtime_dependency(%q<postrank-uri>, ["1.0.7"])
   s.require_paths = ["lib"]
 end
