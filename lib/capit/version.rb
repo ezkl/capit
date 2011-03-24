@@ -1,0 +1,3 @@
+module CapIt
+  VERSION = "0.0.1"
+end
