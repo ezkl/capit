@@ -1,8 +1,6 @@
 require 'postrank-uri'
 
 module CapIt
-  ###
-  # Screen Capture URL. Convenience method for CapIt::Capture.new(opts).capture
   class << self
     def Capture url, options = {}
       CapIt::Capture.new(url, options).capture
