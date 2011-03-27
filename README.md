@@ -33,7 +33,6 @@ Usage
     require 'capit'
     capit = CapIt::Capture("http://www.github.com")
 
-
 Notes
 -----
 Don't use this yet.
