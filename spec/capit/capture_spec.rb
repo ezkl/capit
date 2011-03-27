@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CapIt::Capture do  
@@ -68,15 +69,22 @@ describe CapIt::Capture do
     end
     
     describe "Errors" do
+      
+      it "should raise an error if CutyCapt isn't available" do
+        path = ENV['PATH']
+        expect { ENV['PATH'] = ""; CapIt::Capture.new("http://mdvlrb.com/") }.to raise_error(/CutyCapt/)
+        ENV['PATH'] = path
+      end
+      
       it "should raise an error if OS isn't Linux or Mac" do
         RUBY_PLATFORM = "mingw"
-        expect { subject.determine_os }.to raise_error
+        expect { subject.determine_os }.to raise_error(/platforms/)
         RUBY_PLATFORM = "darwin"
       end
       
       it "should not accept filenames without a valid extension" do
-        expect { CapIt::Capture.new("http://mdvlrb.com/", :filename => 'capit.foo') }.to raise_error
-        expect { subject.filename = "capit.foo" }.to raise_error
+        expect { CapIt::Capture.new("http://mdvlrb.com/", :filename => 'capit.foo') }.to raise_error(/valid extension/)
+        expect { subject.filename = "capit.foo" }.to raise_error(/valid extension/)
       end
     end
     

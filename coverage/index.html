@@ -21,7 +21,7 @@
       <img src="./assets/0.4.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2011-03-26T23:15:41-04:00">2011-03-26T23:15:41-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2011-03-27T00:25:16-04:00">2011-03-27T00:25:16-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -33,8 +33,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>2</b> files in total.
-    <b>49</b> relevant lines. 
-    <span class="green"><b>49</b> lines covered</span> and
+    <b>53</b> relevant lines. 
+    <span class="green"><b>53</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -53,18 +53,18 @@
       <tr>
         <td><a href="#38eb6ef10c6750a3d84e3825233417ac0013286c" class="src_link" title="./lib/capit.rb">./lib/capit.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>16</td>
-        <td>5</td>
-        <td>5</td>
+        <td>19</td>
+        <td>6</td>
+        <td>6</td>
         <td>0</td>
       </tr>
       
       <tr>
         <td><a href="#995ac85aefd450d742f09cb7697db00adb9d9585" class="src_link" title="./lib/capit/capture.rb">./lib/capit/capture.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>115</td>
-        <td>44</td>
-        <td>44</td>
+        <td>120</td>
+        <td>47</td>
+        <td>47</td>
         <td>0</td>
       </tr>
       
@@ -262,7 +262,7 @@
         <pre>13</pre>
       </td>
       <td>
-        <pre>end</pre>
+        <pre>  # Raised when CutyCapt isn't installed.</pre>
       </td>
       <td class="hits">
         
@@ -275,7 +275,7 @@
         <pre>14</pre>
       </td>
       <td>
-        <pre></pre>
+        <pre>  # @abstract</pre>
       </td>
       <td class="hits">
         
@@ -288,6 +288,45 @@
         <pre>15</pre>
       </td>
       <td>
+        <pre>  class CutyCaptError &lt; StandardError; end  </pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>16</pre>
+      </td>
+      <td>
+        <pre>end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>17</pre>
+      </td>
+      <td>
+        <pre></pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>18</pre>
+      </td>
+      <td>
         <pre>require 'capit/version'</pre>
       </td>
       <td class="hits">
@@ -298,7 +337,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>16</pre>
+        <pre>19</pre>
       </td>
       <td>
         <pre>require 'capit/capture'</pre>
@@ -785,9 +824,22 @@
     </tr>
   
     
-    <tr class="hit" data-hits="10">
+    <tr class="hit" data-hits="11">
       <td class="line_number">
         <pre>36</pre>
+      </td>
+      <td>
+        <pre>      cutycapt_installed?</pre>
+      </td>
+      <td class="hits">
+        11
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="10">
+      <td class="line_number">
+        <pre>37</pre>
       </td>
       <td>
         <pre>      @url        = url              </pre>
@@ -800,7 +852,7 @@
     
     <tr class="hit" data-hits="10">
       <td class="line_number">
-        <pre>37</pre>
+        <pre>38</pre>
       </td>
       <td>
         <pre>      @folder     = options[:folder] || Dir.pwd</pre>
@@ -813,7 +865,7 @@
     
     <tr class="hit" data-hits="10">
       <td class="line_number">
-        <pre>38</pre>
+        <pre>39</pre>
       </td>
       <td>
         <pre>      @filename   = options[:filename] || &quot;capit.jpg&quot;</pre>
@@ -826,7 +878,7 @@
     
     <tr class="hit" data-hits="10">
       <td class="line_number">
-        <pre>39</pre>
+        <pre>40</pre>
       </td>
       <td>
         <pre>      @user_agent = options[:user_agent] || &quot;CapIt! [http://github.com/meadvillerb/capit]&quot;</pre>
@@ -839,7 +891,7 @@
     
     <tr class="hit" data-hits="10">
       <td class="line_number">
-        <pre>40</pre>
+        <pre>41</pre>
       </td>
       <td>
         <pre>      @max_wait   = options[:max_wait] || 15000</pre>
@@ -852,7 +904,7 @@
     
     <tr class="hit" data-hits="10">
       <td class="line_number">
-        <pre>41</pre>
+        <pre>42</pre>
       </td>
       <td>
         <pre>      @delay      = options[:delay]</pre>
@@ -865,7 +917,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>42</pre>
+        <pre>43</pre>
       </td>
       <td>
         <pre>      </pre>
@@ -878,7 +930,7 @@
     
     <tr class="hit" data-hits="10">
       <td class="line_number">
-        <pre>43</pre>
+        <pre>44</pre>
       </td>
       <td>
         <pre>      valid_extension?(@filename)</pre>
@@ -891,23 +943,10 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>44</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
         <pre>45</pre>
       </td>
       <td>
-        <pre>    </pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
         
@@ -920,7 +959,7 @@
         <pre>46</pre>
       </td>
       <td>
-        <pre>    # Performs the page capture.</pre>
+        <pre>    </pre>
       </td>
       <td class="hits">
         
@@ -933,7 +972,7 @@
         <pre>47</pre>
       </td>
       <td>
-        <pre>    # </pre>
+        <pre>    # Performs the page capture.</pre>
       </td>
       <td class="hits">
         
@@ -946,7 +985,7 @@
         <pre>48</pre>
       </td>
       <td>
-        <pre>    # @example</pre>
+        <pre>    # </pre>
       </td>
       <td class="hits">
         
@@ -959,7 +998,7 @@
         <pre>49</pre>
       </td>
       <td>
-        <pre>    #   capit = CapIt::Capture.new(&quot;http://mdvlrb.com&quot;, :filename =&gt; &quot;mdvlrb.png&quot;, :folder =&gt; &quot;/home/user/screenshots&quot;)</pre>
+        <pre>    # @example</pre>
       </td>
       <td class="hits">
         
@@ -972,7 +1011,7 @@
         <pre>50</pre>
       </td>
       <td>
-        <pre>    #   capit.capture</pre>
+        <pre>    #   capit = CapIt::Capture.new(&quot;http://mdvlrb.com&quot;, :filename =&gt; &quot;mdvlrb.png&quot;, :folder =&gt; &quot;/home/user/screenshots&quot;)</pre>
       </td>
       <td class="hits">
         
@@ -985,7 +1024,7 @@
         <pre>51</pre>
       </td>
       <td>
-        <pre>    #</pre>
+        <pre>    #   capit.capture</pre>
       </td>
       <td class="hits">
         
@@ -998,7 +1037,7 @@
         <pre>52</pre>
       </td>
       <td>
-        <pre>    # @return [String, false]</pre>
+        <pre>    #</pre>
       </td>
       <td class="hits">
         
@@ -1011,6 +1050,19 @@
         <pre>53</pre>
       </td>
       <td>
+        <pre>    # @return [String, false]</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>54</pre>
+      </td>
+      <td>
         <pre>    # </pre>
       </td>
       <td class="hits">
@@ -1021,7 +1073,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>54</pre>
+        <pre>55</pre>
       </td>
       <td>
         <pre>    def capture      </pre>
@@ -1034,7 +1086,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>55</pre>
+        <pre>56</pre>
       </td>
       <td>
         <pre>      `#{capture_command}`</pre>
@@ -1047,7 +1099,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>56</pre>
+        <pre>57</pre>
       </td>
       <td>
         <pre>      successful?</pre>
@@ -1060,7 +1112,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>57</pre>
+        <pre>58</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -1073,7 +1125,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>58</pre>
+        <pre>59</pre>
       </td>
       <td>
         <pre>    </pre>
@@ -1086,7 +1138,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>59</pre>
+        <pre>60</pre>
       </td>
       <td>
         <pre>    def filename=(filename)</pre>
@@ -1099,7 +1151,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>60</pre>
+        <pre>61</pre>
       </td>
       <td>
         <pre>      valid_extension?(filename)</pre>
@@ -1112,7 +1164,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>61</pre>
+        <pre>62</pre>
       </td>
       <td>
         <pre>      @filename = filename </pre>
@@ -1125,7 +1177,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>62</pre>
+        <pre>63</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -1138,7 +1190,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>63</pre>
+        <pre>64</pre>
       </td>
       <td>
         <pre>    </pre>
@@ -1151,7 +1203,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>64</pre>
+        <pre>65</pre>
       </td>
       <td>
         <pre>    def valid_extension?(filename)</pre>
@@ -1164,7 +1216,7 @@
     
     <tr class="hit" data-hits="12">
       <td class="line_number">
-        <pre>65</pre>
+        <pre>66</pre>
       </td>
       <td>
         <pre>      unless !filename[EXTENSIONS].nil?</pre>
@@ -1177,7 +1229,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>66</pre>
+        <pre>67</pre>
       </td>
       <td>
         <pre>        raise InvalidExtensionError, &quot;You must supply a valid extension!&quot;</pre>
@@ -1190,23 +1242,10 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>67</pre>
-      </td>
-      <td>
-        <pre>      end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
         <pre>68</pre>
       </td>
       <td>
-        <pre>    end</pre>
+        <pre>      end</pre>
       </td>
       <td class="hits">
         
@@ -1219,7 +1258,7 @@
         <pre>69</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
         
@@ -1232,7 +1271,7 @@
         <pre>70</pre>
       </td>
       <td>
-        <pre>    # Determines whether the capture was successful</pre>
+        <pre>  </pre>
       </td>
       <td class="hits">
         
@@ -1245,7 +1284,7 @@
         <pre>71</pre>
       </td>
       <td>
-        <pre>    # by checking for the existence of the output file.</pre>
+        <pre>    # Determines whether the capture was successful</pre>
       </td>
       <td class="hits">
         
@@ -1258,7 +1297,7 @@
         <pre>72</pre>
       </td>
       <td>
-        <pre>    # Sets {@output} if true.</pre>
+        <pre>    # by checking for the existence of the output file.</pre>
       </td>
       <td class="hits">
         
@@ -1271,7 +1310,7 @@
         <pre>73</pre>
       </td>
       <td>
-        <pre>    #</pre>
+        <pre>    # Sets {@output} if true.</pre>
       </td>
       <td class="hits">
         
@@ -1284,7 +1323,7 @@
         <pre>74</pre>
       </td>
       <td>
-        <pre>    # @return [true, false]</pre>
+        <pre>    #</pre>
       </td>
       <td class="hits">
         
@@ -1297,6 +1336,19 @@
         <pre>75</pre>
       </td>
       <td>
+        <pre>    # @return [true, false]</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>76</pre>
+      </td>
+      <td>
         <pre>    #</pre>
       </td>
       <td class="hits">
@@ -1307,7 +1359,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>76</pre>
+        <pre>77</pre>
       </td>
       <td>
         <pre>    def successful?</pre>
@@ -1320,7 +1372,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>77</pre>
+        <pre>78</pre>
       </td>
       <td>
         <pre>      if FileTest.exists?(&quot;#{@folder}/#{@filename}&quot;)</pre>
@@ -1333,7 +1385,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>78</pre>
+        <pre>79</pre>
       </td>
       <td>
         <pre>        @output = &quot;#{@folder}/#{@filename}&quot;</pre>
@@ -1346,7 +1398,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>79</pre>
+        <pre>80</pre>
       </td>
       <td>
         <pre>      end  </pre>
@@ -1359,23 +1411,10 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>80</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
         <pre>81</pre>
       </td>
       <td>
-        <pre>    </pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
         
@@ -1388,7 +1427,7 @@
         <pre>82</pre>
       </td>
       <td>
-        <pre>    # Produces the command used to run CutyCapt. </pre>
+        <pre>    </pre>
       </td>
       <td class="hits">
         
@@ -1401,7 +1440,7 @@
         <pre>83</pre>
       </td>
       <td>
-        <pre>    # </pre>
+        <pre>    # Produces the command used to run CutyCapt. </pre>
       </td>
       <td class="hits">
         
@@ -1414,7 +1453,7 @@
         <pre>84</pre>
       </td>
       <td>
-        <pre>    # @return [String]</pre>
+        <pre>    # </pre>
       </td>
       <td class="hits">
         
@@ -1427,6 +1466,19 @@
         <pre>85</pre>
       </td>
       <td>
+        <pre>    # @return [String]</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>86</pre>
+      </td>
+      <td>
         <pre>    #</pre>
       </td>
       <td class="hits">
@@ -1437,7 +1489,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>86</pre>
+        <pre>87</pre>
       </td>
       <td>
         <pre>    def capture_command        </pre>
@@ -1450,7 +1502,7 @@
     
     <tr class="hit" data-hits="4">
       <td class="line_number">
-        <pre>87</pre>
+        <pre>88</pre>
       </td>
       <td>
         <pre>      cmd = &quot;CutyCapt&quot;</pre>
@@ -1463,7 +1515,7 @@
     
     <tr class="hit" data-hits="4">
       <td class="line_number">
-        <pre>88</pre>
+        <pre>89</pre>
       </td>
       <td>
         <pre>      cmd += &quot; --url='#{@url}'&quot;</pre>
@@ -1476,7 +1528,7 @@
     
     <tr class="hit" data-hits="4">
       <td class="line_number">
-        <pre>89</pre>
+        <pre>90</pre>
       </td>
       <td>
         <pre>      cmd += &quot; --out='#{@folder}/#{@filename}'&quot;</pre>
@@ -1489,7 +1541,7 @@
     
     <tr class="hit" data-hits="4">
       <td class="line_number">
-        <pre>90</pre>
+        <pre>91</pre>
       </td>
       <td>
         <pre>      cmd += &quot; --max-wait=#{@max_wait}&quot;</pre>
@@ -1502,7 +1554,7 @@
     
     <tr class="hit" data-hits="4">
       <td class="line_number">
-        <pre>91</pre>
+        <pre>92</pre>
       </td>
       <td>
         <pre>      cmd += &quot; --delay=#{@delay}&quot; if @delay</pre>
@@ -1515,7 +1567,7 @@
     
     <tr class="hit" data-hits="4">
       <td class="line_number">
-        <pre>92</pre>
+        <pre>93</pre>
       </td>
       <td>
         <pre>      cmd += &quot; --user-agent='#{@user_agent}'&quot;</pre>
@@ -1528,7 +1580,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>93</pre>
+        <pre>94</pre>
       </td>
       <td>
         <pre>      </pre>
@@ -1541,7 +1593,7 @@
     
     <tr class="hit" data-hits="4">
       <td class="line_number">
-        <pre>94</pre>
+        <pre>95</pre>
       </td>
       <td>
         <pre>      if determine_os == :linux</pre>
@@ -1554,7 +1606,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>95</pre>
+        <pre>96</pre>
       </td>
       <td>
         <pre>        xvfb = 'xvfb-run --server-args=&quot;-screen 0, 1024x768x24&quot; '</pre>
@@ -1567,7 +1619,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>96</pre>
+        <pre>97</pre>
       </td>
       <td>
         <pre>        xvfb.concat(cmd)</pre>
@@ -1580,7 +1632,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>97</pre>
+        <pre>98</pre>
       </td>
       <td>
         <pre>      else</pre>
@@ -1593,7 +1645,7 @@
     
     <tr class="hit" data-hits="3">
       <td class="line_number">
-        <pre>98</pre>
+        <pre>99</pre>
       </td>
       <td>
         <pre>        cmd</pre>
@@ -1606,7 +1658,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>99</pre>
+        <pre>100</pre>
       </td>
       <td>
         <pre>      end        </pre>
@@ -1619,23 +1671,10 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>100</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
         <pre>101</pre>
       </td>
       <td>
-        <pre>    </pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
         
@@ -1648,7 +1687,7 @@
         <pre>102</pre>
       </td>
       <td>
-        <pre>    # Uses RUBY_PLATFORM to determine the operating system.</pre>
+        <pre>    </pre>
       </td>
       <td class="hits">
         
@@ -1661,7 +1700,7 @@
         <pre>103</pre>
       </td>
       <td>
-        <pre>    # Not foolproof, but good enough for the time being.</pre>
+        <pre>    # Uses RUBY_PLATFORM to determine the operating system.</pre>
       </td>
       <td class="hits">
         
@@ -1674,7 +1713,7 @@
         <pre>104</pre>
       </td>
       <td>
-        <pre>    # </pre>
+        <pre>    # Not foolproof, but good enough for the time being.</pre>
       </td>
       <td class="hits">
         
@@ -1687,7 +1726,7 @@
         <pre>105</pre>
       </td>
       <td>
-        <pre>    # @return [Symbol]</pre>
+        <pre>    # </pre>
       </td>
       <td class="hits">
         
@@ -1700,6 +1739,19 @@
         <pre>106</pre>
       </td>
       <td>
+        <pre>    # @return [Symbol]</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>107</pre>
+      </td>
+      <td>
         <pre>    # </pre>
       </td>
       <td class="hits">
@@ -1710,7 +1762,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>107</pre>
+        <pre>108</pre>
       </td>
       <td>
         <pre>    def determine_os</pre>
@@ -1723,7 +1775,7 @@
     
     <tr class="hit" data-hits="5">
       <td class="line_number">
-        <pre>108</pre>
+        <pre>109</pre>
       </td>
       <td>
         <pre>      case RUBY_PLATFORM</pre>
@@ -1736,7 +1788,7 @@
     
     <tr class="hit" data-hits="3">
       <td class="line_number">
-        <pre>109</pre>
+        <pre>110</pre>
       </td>
       <td>
         <pre>        when /darwin/i then :mac</pre>
@@ -1749,7 +1801,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>110</pre>
+        <pre>111</pre>
       </td>
       <td>
         <pre>        when /linux/i then :linux</pre>
@@ -1762,7 +1814,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>111</pre>
+        <pre>112</pre>
       </td>
       <td>
         <pre>        else raise InvalidOSError, &quot;CapIt currently only works on the Mac and Linux platforms&quot;</pre>
@@ -1775,7 +1827,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>112</pre>
+        <pre>113</pre>
       </td>
       <td>
         <pre>      end</pre>
@@ -1788,7 +1840,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>113</pre>
+        <pre>114</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -1801,7 +1853,59 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>114</pre>
+        <pre>115</pre>
+      </td>
+      <td>
+        <pre>    </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>116</pre>
+      </td>
+      <td>
+        <pre>    def cutycapt_installed?</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="11">
+      <td class="line_number">
+        <pre>117</pre>
+      </td>
+      <td>
+        <pre>      raise CutyCaptError, &quot;CutyCapt must be installed and available on PATH&quot; if `which CutyCapt`.empty?</pre>
+      </td>
+      <td class="hits">
+        11
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>118</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>119</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -1814,7 +1918,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>115</pre>
+        <pre>120</pre>
       </td>
       <td>
         <pre>end</pre>

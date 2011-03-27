@@ -10,6 +10,9 @@ module CapIt
   # @abstract
   class InvalidExtensionError < StandardError; end
   
+  # Raised when CutyCapt isn't installed.
+  # @abstract
+  class CutyCaptError < StandardError; end  
 end
 
 require 'capit/version'

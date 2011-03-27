@@ -1,12 +1,10 @@
-# -*- encoding: utf-8 -*-
+# encoding: UTF-8
+require 'simplecov'
 
-begin
-  require 'simplecov'
-  SimpleCov.start do
-    coverage_dir 'coverage'
-    add_filter '/spec/'
-  end
-rescue LoadError
+SimpleCov.start do
+  coverage_dir 'coverage'
+  add_filter '/spec/'
 end
 
+require 'rspec'
 require 'capit'

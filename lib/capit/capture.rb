@@ -33,6 +33,7 @@ module CapIt
     #   capit.folder = "/home/user/screenshots"
     #
     def initialize url, options = {}
+      cutycapt_installed?
       @url        = url              
       @folder     = options[:folder] || Dir.pwd
       @filename   = options[:filename] || "capit.jpg"
@@ -110,6 +111,10 @@ module CapIt
         when /linux/i then :linux
         else raise InvalidOSError, "CapIt currently only works on the Mac and Linux platforms"
       end
+    end
+    
+    def cutycapt_installed?
+      raise CutyCaptError, "CutyCapt must be installed and available on PATH" if `which CutyCapt`.empty?
     end
   end
 end
