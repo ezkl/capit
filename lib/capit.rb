@@ -1,10 +1,18 @@
 # encoding: UTF-8
 
-# To ensure clean URI's
-require 'postrank-uri'
-
 # Primary namespace of the capit gem
 module CapIt
+  
+  # Raised when OS isn't Linux or Mac
+  class InvalidOSError < StandardError; end
+
+  # Raised when a filename with an invalid extension is entered.
+  # @abstract
+  class InvalidExtensionError < StandardError; end
+  
+  # Raised when CutyCapt isn't installed.
+  # @abstract
+  class CutyCaptError < StandardError; end  
 end
 
 require 'capit/version'
