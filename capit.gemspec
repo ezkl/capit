@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
+
 require 'capit/version'
 
 Gem::Specification.new do |s|
@@ -19,8 +20,6 @@ Gem::Specification.new do |s|
   ]
   
   s.files         = `git ls-files`.split("\n")
-  
-  s.add_runtime_dependency(%q<postrank-uri>, ["1.0.7"])
-  
+    
   s.require_paths = ["lib"]
 end
