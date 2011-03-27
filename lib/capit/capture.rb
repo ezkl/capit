@@ -30,11 +30,19 @@ module CapIt
     # The URL of the page to be captured
     attr_reader   :url
     
-    # Sets up all of our options.
-    attr_accessor :folder, :filename, :user_agent, :max_wait, 
-                  :delay, :output
+    attr_accessor :folder, :filename, :user_agent, :max_wait, :delay, :output
     
     # Initialize a new Capture
+    # @param [String] url The URL we want to capture.
+    # @param [Hash] options Various options we can set.
+    #
+    # @return [Object]
+    #
+    # @see CapIt::Capture#cutycapt_installed?
+    # @see CapIt::Capture#valid_extension?
+    #
+    # @raise CutyCaptError
+    # @raise InvalidExtensionError
     #
     def initialize url, options = {}
       cutycapt_installed?
@@ -56,13 +64,17 @@ module CapIt
     #
     # @return [String, false]
     # 
+    # @see CapIt::Capture#successful? 
+    #
     def capture      
       `#{capture_command}`
       successful?
     end
     
     # Overloads #filename= to ensure that filenames have valid extensions.
-    # @see valid_extension?
+    #
+    # @param [String] filename
+    # @see CapIt::Capture#valid_extension?
     # 
     def filename=(filename)
       valid_extension?(filename)
@@ -71,13 +83,15 @@ module CapIt
     
     # Compares filename against EXTENSIONS. Raises InvalidExtensionError if the extension is invalid.
     # 
+    # @param [String] filename
+    #
     def valid_extension?(filename)
       raise InvalidExtensionError, "You must supply a valid extension!" if filename[EXTENSIONS].nil?
     end
   
     # Determines whether the capture was successful
     # by checking for the existence of the output file.
-    # Sets #output if true.
+    # Sets CapIt::Capture#output if true.
     #
     # @return [String, false]
     #
@@ -111,6 +125,7 @@ module CapIt
     # Not foolproof, but good enough for the time being.
     # 
     # @return [Symbol]
+    # @raise [InvalidOSError]
     # 
     def determine_os
       case RUBY_PLATFORM
