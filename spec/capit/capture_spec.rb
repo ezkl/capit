@@ -13,7 +13,6 @@ describe CapIt::Capture do
   
   describe "Capture Class" do
     subject { CapIt::Capture.new("http://mdvlrb.com/", :filename => 'mdvlrb.png') }
-    
     describe "#initialize" do
       it "should have defaults" do
         subject.folder.should == Dir.pwd
@@ -55,31 +54,32 @@ describe CapIt::Capture do
     
     describe "#capture_command" do
       it "should prefix xvfb when platform is Linux" do
-        @capit = CapIt::Capture.new("http://mdvlrb.com/")
-        RUBY_PLATFORM = "linux"
-        @capit.capture_command.should match /^xvfb/
+        with_constants :RUBY_PLATFORM => "linux" do
+          @capit = CapIt::Capture.new("http://mdvlrb.com/")
+          @capit.capture_command.should match /^xvfb/
+        end
       end
       
       it "shouldn't prefix anything when platform is Mac" do
-        @capit = CapIt::Capture.new("http://mdvlrb.com/")
-        RUBY_PLATFORM = "darwin"
-        @capit.capture_command.should match /^CutyCapt/
+        with_constants :RUBY_PLATFORM => "darwin" do
+          @capit = CapIt::Capture.new("http://mdvlrb.com/")
+          @capit.capture_command.should match /^CutyCapt/
+        end
       end
       
     end
     
     describe "Errors" do
-      
       it "should raise an error if CutyCapt isn't available" do
-        path = ENV['PATH']
-        expect { ENV['PATH'] = ""; CapIt::Capture.new("http://mdvlrb.com/") }.to raise_error(/CutyCapt/)
-        ENV['PATH'] = path
+        with_environment_variable 'PATH' => "" do
+          expect { CapIt::Capture.new("http://mdvlrb.com/") }.to raise_error(/CutyCapt/)
+        end
       end
       
       it "should raise an error if OS isn't Linux or Mac" do
-        RUBY_PLATFORM = "mingw"
-        expect { subject.determine_os }.to raise_error(/platforms/)
-        RUBY_PLATFORM = "darwin"
+        with_constants :RUBY_PLATFORM => "mingw" do
+          expect { subject.determine_os }.to raise_error(/platforms/)
+        end
       end
       
       it "should not accept filenames without a valid extension" do
@@ -87,6 +87,5 @@ describe CapIt::Capture do
         expect { subject.filename = "capit.foo" }.to raise_error(/valid extension/)
       end
     end
-    
   end
 end
