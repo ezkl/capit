@@ -54,7 +54,6 @@ describe CapIt do
     end
     
     describe "#capture_command" do
-  
       before { @capit = CapIt::Capture.new("http://mdvlrb.com/") }
       subject { @capit }
     
