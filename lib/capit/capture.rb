@@ -48,7 +48,7 @@ module CapIt
       cutycapt_installed?
       @url        = url              
       @folder     = options[:folder] || Dir.pwd
-      @filename   = options[:filename] || "capit.jpg"
+      @filename   = options[:filename] || "capit.jpeg"
       @user_agent = options[:user_agent] || "CapIt! [http://github.com/meadvillerb/capit]"
       @max_wait   = options[:max_wait] || 15000
       @delay      = options[:delay]
@@ -106,8 +106,7 @@ module CapIt
     # @return [String]
     #
     def capture_command        
-      cmd = "CutyCapt"
-      cmd += " --url='#{@url}'"
+      cmd = "CutyCapt --url='#{@url}'"
       cmd += " --out='#{@folder}/#{@filename}'"
       cmd += " --max-wait=#{@max_wait}"
       cmd += " --delay=#{@delay}" if @delay

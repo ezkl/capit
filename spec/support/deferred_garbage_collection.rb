@@ -1,9 +1,6 @@
 class DeferredGarbageCollection
-
   DEFERRED_GC_THRESHOLD = (ENV['DEFER_GC'] || 10.0).to_f
-
   @@last_gc_run = Time.now
-
   def self.start
     GC.disable if DEFERRED_GC_THRESHOLD > 0
   end
@@ -16,5 +13,14 @@ class DeferredGarbageCollection
       @@last_gc_run = Time.now
     end
   end
+end
 
+RSpec.configure do |config|
+  config.before(:all) do
+    DeferredGarbageCollection.start
+  end
+  
+  config.after(:all) do
+    DeferredGarbageCollection.reconsider
+  end
 end
