@@ -13,6 +13,15 @@ module CapIt
     end
   end
   
+  # This class provides the screen capture functionality.
+  #
+  # @example
+  #   capit = CapIt::Capture.new("http://mdvlrb.com", :filename => "mdvlrb.png")
+  #   capit.max_wait = 5000
+  #   capit.folder = "/home/user/screenshots"
+  #   capit.capture
+  #   capit.output = "/home/user/screenshots/mdvlrb.png"
+  #
   class Capture
     
     # All extensions CutyCapt can use to infer format of output
@@ -21,16 +30,11 @@ module CapIt
     # The URL of the page to be captured
     attr_reader   :url
     
-    
+    # Sets up all of our options.
     attr_accessor :folder, :filename, :user_agent, :max_wait, 
                   :delay, :output
     
     # Initialize a new Capture
-    #
-    # @example
-    #   capit = CapIt::Capture.new("http://mdvlrb.com", :filename => "mdvlrb.png")
-    #   capit.max_wait = 5000
-    #   capit.folder = "/home/user/screenshots"
     #
     def initialize url, options = {}
       cutycapt_installed?
@@ -57,22 +61,25 @@ module CapIt
       successful?
     end
     
+    # Overloads #filename= to ensure that filenames have valid extensions.
+    # @see valid_extension?
+    # 
     def filename=(filename)
       valid_extension?(filename)
       @filename = filename 
     end
     
+    # Compares filename against EXTENSIONS. Raises InvalidExtensionError if the extension is invalid.
+    # 
     def valid_extension?(filename)
-      unless !filename[EXTENSIONS].nil?
-        raise InvalidExtensionError, "You must supply a valid extension!"
-      end
+      raise InvalidExtensionError, "You must supply a valid extension!" if filename[EXTENSIONS].nil?
     end
   
     # Determines whether the capture was successful
     # by checking for the existence of the output file.
-    # Sets {@output} if true.
+    # Sets #output if true.
     #
-    # @return [true, false]
+    # @return [String, false]
     #
     def successful?
       if FileTest.exists?("#{@folder}/#{@filename}")
@@ -113,6 +120,11 @@ module CapIt
       end
     end
     
+    # Checks to see if CutyCapt is available in PATH.
+    # Raises CutyCaptError if not.
+    # 
+    # @return
+    # 
     def cutycapt_installed?
       raise CutyCaptError, "CutyCapt must be installed and available on PATH" if `which CutyCapt`.empty?
     end

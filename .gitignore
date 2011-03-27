@@ -4,5 +4,6 @@ Gemfile.lock
 pkg/*
 doc/*
 coverage/*
+tmp/*
 .yardoc
 .DS_STORE

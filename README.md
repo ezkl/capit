@@ -33,10 +33,5 @@ Usage
     require 'capit'
     capit = CapIt::Capture("http://www.github.com")
 
-Notes
------
-Don't use this yet.
-
 [1]: http://cutycapt.sourceforge.net/ "CutyCapt"
 [2]: http://daveelkins.com/2009/04/10/setting-up-headless-xserver-and-cutycapt-on-ubuntu/ "Setting up Headless XServer and CutyCapt on Ubuntu"
-
