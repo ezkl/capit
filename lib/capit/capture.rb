@@ -49,7 +49,7 @@ module CapIt
     #   capit = CapIt::Capture.new("http://mdvlrb.com", :filename => "mdvlrb.png", :folder => "/home/user/screenshots")
     #   capit.capture
     #
-    # @return [true, false]
+    # @return [String, false]
     # 
     def capture      
       `#{capture_command}`
@@ -76,8 +76,6 @@ module CapIt
     def successful?
       if FileTest.exists?("#{@folder}/#{@filename}")
         @output = "#{@folder}/#{@filename}"
-      else
-        false
       end  
     end
     

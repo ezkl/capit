@@ -1,7 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CapIt::Capture do  
-  # Need to figure out how to test this.
   describe "Convenience Method" do
     it "should have a Convenience Method" do
       @folder = Dir.pwd + '/spec/temporary'
@@ -23,12 +22,7 @@ describe CapIt::Capture do
       end
 
       it "should respond to input" do
-        subject.should respond_to :url
-        subject.should respond_to :folder
-        subject.should respond_to :filename
-        subject.should respond_to :user_agent
-        subject.should respond_to :max_wait
-        subject.should respond_to :delay
+        subject.should respond_to :url, :folder, :filename, :user_agent, :max_wait, :delay
       end
       
       it "should allow filename to be changed if extension is valid" do
@@ -42,7 +36,6 @@ describe CapIt::Capture do
       before(:all) do
         @folder = Dir.pwd + '/spec/temporary'
         @capit = CapIt::Capture.new("http://mdvlrb.com/", :filename => 'mdvlrb.jpeg', :folder => @folder)
-        
         `mkdir #{@folder}`
       end
       
@@ -63,7 +56,7 @@ describe CapIt::Capture do
       it "should prefix xvfb when platform is Linux" do
         @capit = CapIt::Capture.new("http://mdvlrb.com/")
         RUBY_PLATFORM = "linux"
-        @capit.capture_command.should match /xvfb/
+        @capit.capture_command.should match /^xvfb/
       end
       
       it "shouldn't prefix anything when platform is Mac" do
@@ -74,16 +67,18 @@ describe CapIt::Capture do
       
     end
     
-    describe "Exceptions" do
+    describe "Errors" do
       it "should raise an error if OS isn't Linux or Mac" do
         RUBY_PLATFORM = "mingw"
-        CapIt::Capture.new("http://mdvlrb.com/").should raise_error
+        expect { subject.determine_os }.to raise_error
+        RUBY_PLATFORM = "darwin"
       end
       
       it "should not accept filenames without a valid extension" do
-        lambda {CapIt::Capture.new("http://mdvlrb.com/", :filename => 'capit.foo')}.should raise_error
-        lambda {subject.filename = "capit.foo"}.should raise_error
+        expect { CapIt::Capture.new("http://mdvlrb.com/", :filename => 'capit.foo') }.to raise_error
+        expect { subject.filename = "capit.foo" }.to raise_error
       end
     end
+    
   end
 end

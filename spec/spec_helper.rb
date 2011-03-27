@@ -9,5 +9,4 @@ begin
 rescue LoadError
 end
 
-require 'growl'
 require 'capit'
