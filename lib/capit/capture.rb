@@ -25,7 +25,7 @@ module CapIt
   class Capture
     
     # All extensions CutyCapt can use to infer format of output
-    EXTENSIONS = /\A[\w]+\.(svg|ps|pdf|itext|html|rtree|png|jpeg|jpg|mng|tiff|gif|bmp|ppm|xvm|xpm)\z/i
+    EXTENSIONS = /\A[\w\-]+\.(svg|ps|pdf|itext|html|rtree|png|jpeg|jpg|mng|tiff|gif|bmp|ppm|xvm|xpm)\z/i
     
     # The URL of the page to be captured
     attr_reader   :url
