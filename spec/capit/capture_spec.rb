@@ -4,7 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe CapIt do  
   it "should have a Convenience Method" do
     @folder = setup_temporary_folder
-    @capit = CapIt::Capture("http://mdvlrb.com/", :filename => 'test-mdvlrb.png', :folder => @folder).should == @folder + "/test-mdvlrb.png"
+    @capit = CapIt::Capture("http://mdvlrb.com/", :filename => 'one.test-mdvlrb.png', :folder => @folder).should == @folder + "/one.test-mdvlrb.png"
     destroy_temporary_folder(@folder)
   end
     
