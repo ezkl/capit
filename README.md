@@ -6,7 +6,17 @@ CapIt provides a simple Ruby interface to Björn Höhrmann's
 Install CutyCapt
 ----------------
 
-### Ubuntu/Debian
+### OSX (via Homebrew)
+
+    brew install cuty_capt
+
+
+### Ubuntu >= 11.04 & Debian >= 6.0
+
+    sudo apt-get install xvfb
+    sudo apt-get install cutycapt
+
+### Other Ubuntu/Debian
 (from [Setting up Headless XServer and CutyCapt on Ubuntu][2])
 
     sudo apt-get install xvfb
@@ -19,10 +29,6 @@ Install CutyCapt
     make
 
 You'll also need to make sure the `CutyCapt` executable is in your PATH.
-
-### OSX (via Homebrew)
-
-    brew install cuty_capt
 
 Install CapIt
 -------------
