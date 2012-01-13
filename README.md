@@ -38,6 +38,8 @@ Usage
 -----
     require 'capit'
     capit = CapIt::Capture("http://www.github.com")
+    # You can also set CutyCapt's path manually if necessary.
+    capit = CapIt::Capture("http://www.github.com", :cutycapt_path => "/sbin/CutyCapt")
 
 [1]: http://cutycapt.sourceforge.net/ "CutyCapt"
 [2]: http://daveelkins.com/2009/04/10/setting-up-headless-xserver-and-cutycapt-on-ubuntu/ "Setting up Headless XServer and CutyCapt on Ubuntu"
