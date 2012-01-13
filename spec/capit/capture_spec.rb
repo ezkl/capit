@@ -13,7 +13,7 @@ describe CapIt do
     subject { @capit }
     
     describe "#initialize" do
-      it { should respond_to :url, :folder, :filename, :user_agent, :max_wait, :delay }
+      it { should respond_to :url, :folder, :filename, :user_agent, :max_wait, :delay, :cutycapt_path }
       
       context "defaults" do
         specify { @capit.folder.should == Dir.pwd }
@@ -53,6 +53,20 @@ describe CapIt do
       end
     end
     
+    describe "#cutycapt_path=" do
+      it "should allow the user to set CutyCapt's path" do
+        capit = CapIt::Capture.new("http://mdvlrb.com/")
+        capit.cutycapt_path = "/usr/local/sbin/CutyCapt"
+        capit.cutycapt_path.should == "/usr/local/sbin/CutyCapt"
+      end
+    end
+    
+    describe "#determine_cutycapt_path" do
+      it "should determine the appropriate path for the executable if possible" do
+        @capit.determine_cutycapt_path.should == "/usr/local/bin/CutyCapt"
+      end
+    end
+    
     describe "#capture_command" do
       before { @capit = CapIt::Capture.new("http://mdvlrb.com/") }
       subject { @capit }
@@ -68,7 +82,7 @@ describe CapIt do
       context "when platform is Mac" do
         it "should not add the xvfb prefix" do
           with_constants :RUBY_PLATFORM => "darwin" do 
-            @capit.capture_command.should match /^CutyCapt/
+            @capit.capture_command.should match /CutyCapt/
           end
         end
       end  
@@ -79,14 +93,6 @@ describe CapIt do
         it "should raise an error" do
           with_constants :RUBY_PLATFORM => "mingw" do
            expect { @capit.determine_os }.should raise_error(/platforms/)
-          end
-        end
-      end
-
-      context "when CutyCapt executable is unavailable" do
-        it "should raise an error" do
-          with_environment_variable 'PATH' => "" do
-            expect { CapIt::Capture.new("http://mdvlrb.com/") }.to raise_error(/CutyCapt/)
           end
         end
       end
