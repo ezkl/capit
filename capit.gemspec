@@ -23,10 +23,6 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- spec/*`.split("\n")
   
   s.require_paths = ["lib"]
-  s.add_development_dependency('rspec', '~> 2.5.0')
-  s.add_development_dependency('simplecov', '~> 0.4.0')
-  s.add_development_dependency('guard', '~> 0.3.0')
-  s.add_development_dependency('growl', '~> 1.0.3')
-  s.add_development_dependency('guard-bundler', '~> 0.1.2')
-  s.add_development_dependency('guard-rspec', '~> 0.2.0')
+  s.add_dependency("hike")
+  s.add_development_dependency('rspec')
 end

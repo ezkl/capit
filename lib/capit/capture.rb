@@ -30,7 +30,7 @@ module CapIt
     # The URL of the page to be captured
     attr_reader   :url
     
-    attr_accessor :folder, :filename, :user_agent, :max_wait, :delay, :output
+    attr_accessor :folder, :filename, :user_agent, :max_wait, :delay, :output, :cutycapt_path
     
     # Initialize a new Capture
     # @param [String] url The URL we want to capture.
@@ -45,14 +45,14 @@ module CapIt
     # @raise InvalidExtensionError
     #
     def initialize url, options = {}
-      cutycapt_installed?
-      @url        = url              
-      @folder     = options[:folder] || Dir.pwd
-      @filename   = options[:filename] || "capit.jpeg"
-      @user_agent = options[:user_agent] || "CapIt! [http://github.com/meadvillerb/capit]"
-      @max_wait   = options[:max_wait] || 15000
-      @delay      = options[:delay]
-      
+      @url            = url              
+      @folder         = options[:folder] || Dir.pwd
+      @filename       = options[:filename] || "capit.jpeg"
+      @user_agent     = options[:user_agent] || "CapIt! [http://github.com/meadvillerb/capit]"
+      @max_wait       = options[:max_wait] || 15000
+      @delay          = options[:delay]
+      @cutycapt_path  = options[:cutycapt_path] || determine_cutycapt_path
+            
       valid_extension?(@filename)
     end
     
@@ -106,7 +106,7 @@ module CapIt
     # @return [String]
     #
     def capture_command        
-      cmd = "CutyCapt --url='#{@url}'"
+      cmd = "#{@cutycapt_path} --url='#{@url}'"
       cmd += " --out='#{@folder}/#{@filename}'"
       cmd += " --max-wait=#{@max_wait}"
       cmd += " --delay=#{@delay}" if @delay
@@ -118,6 +118,10 @@ module CapIt
       else
         cmd
       end        
+    end
+    
+    def determine_cutycapt_path
+      `which CutyCapt`.strip or `which cutycapt`.strip
     end
     
     # Uses RUBY_PLATFORM to determine the operating system.
@@ -132,15 +136,6 @@ module CapIt
         when /linux/i then :linux
         else raise InvalidOSError, "CapIt currently only works on the Mac and Linux platforms"
       end
-    end
-    
-    # Checks to see if CutyCapt is available in PATH.
-    # Raises CutyCaptError if not.
-    # 
-    # @return
-    # 
-    def cutycapt_installed?
-      raise CutyCaptError, "CutyCapt must be installed and available on PATH" if `which CutyCapt`.empty?
     end
   end
 end
