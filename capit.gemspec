@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ezekiel Templin"]
   s.email       = ["ezkl@me.com"]
-  s.date        = %q{2011-04-14}
+  s.date        = %q{2012-01-13}
   s.homepage    = "http://github.com/meadvillerb/capit"
   s.summary     = %q{Easy screen captures with the help of CutyCapt}
   s.description = %q{CapIt provides a simple Ruby interface to Björn Höhrmann's CutyCapt.}
