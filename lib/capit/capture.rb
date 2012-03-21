@@ -113,7 +113,7 @@ module CapIt
       cmd += " --user-agent='#{@user_agent}'"
       
       if determine_os == :linux
-        xvfb = 'xvfb-run --server-args="-screen 0, 1024x768x24" '
+        xvfb = 'xvfb-run --server-args="-screen 99, 1024x768x24" '
         xvfb.concat(cmd)
       else
         cmd
