@@ -23,5 +23,5 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- spec/*`.split("\n")
   
   s.require_paths = ["lib"]
-  s.add_development_dependency('rspec')
+  s.add_development_dependency('rspec', "~> 2.9.0")
 end

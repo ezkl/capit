@@ -2,15 +2,15 @@
 
 source "http://rubygems.org"
 
-group :test do
-  gem 'rspec'
-  gem 'yard'
+gemspec
+
+group :development do
   gem 'simplecov', :require => false
+  gem 'yard', :require => false
   gem 'guard'
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'growl'
-  gem 'guard-bundler'
+  gem 'growl', :require => false
   gem 'guard-rspec'
+  gem 'rake', :require => false
 end
 
-gemspec
+
