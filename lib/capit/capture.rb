@@ -117,12 +117,16 @@ module CapIt
       cmd += " --min-height='#{@min_height}'"
 
       
-      if determine_os == :linux
+      if determine_os == :linux and check_xvfb
         xvfb = 'xvfb-run --server-args="-screen 99, 1024x768x24" '
         xvfb.concat(cmd)
       else
         cmd
       end        
+    end
+    
+    def check_xvfb
+      !(`which xvfb-run`.empty?)
     end
     
     def determine_cutycapt_path

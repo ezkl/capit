@@ -74,9 +74,17 @@ describe CapIt do
       subject { @capit }
     
       context "when platform is Linux" do
-        it "should add the xvfb prefix" do
+        it "should add the xvfb prefix if xvfb-run available" do
+          @capit.stub(:check_xvfb).and_return(:true)
           with_constants :RUBY_PLATFORM => "linux" do
             @capit.capture_command.should match /^xvfb/
+          end
+        end
+        
+        it 'should not add the xvfb prefix if xvfb-run not available' do
+          CapIt::Capture.stub(:check_xvfb).and_return(:false)
+          with_constants :RUBY_PLATFORM => "linux" do
+            @capit.capture_command.should_not match /^xvfb/
           end
         end
       end
