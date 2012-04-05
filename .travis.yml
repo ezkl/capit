@@ -4,10 +4,4 @@ rvm:
   - 1.9.2
   - 1.9.3
 before_install:
-  - sudo apt-get update
   - sudo apt-get install cutycapt -y
-before_script:
-  - "export DISPLAY=:99.0"
-  - "export TRAVIS=true"
-  - "sh -e /etc/init.d/xvfb start"
-  - "which cutycapt"
