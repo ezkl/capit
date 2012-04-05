@@ -30,7 +30,7 @@ module CapIt
     # The URL of the page to be captured
     attr_reader   :url
     
-    attr_accessor :folder, :filename, :user_agent, :max_wait, :delay, :output, :cutycapt_path
+    attr_accessor :folder, :filename, :user_agent, :max_wait, :delay, :output, :cutycapt_path, :min_width, :min_height
     
     # Initialize a new Capture
     # @param [String] url The URL we want to capture.
