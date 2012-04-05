@@ -52,6 +52,8 @@ module CapIt
       @max_wait       = options[:max_wait] || 15000
       @delay          = options[:delay]
       @cutycapt_path  = options[:cutycapt_path] || determine_cutycapt_path
+      @min_width      = options[:min_width] || 1024
+      @min_height     = options[:min_height] || 768
             
       valid_extension?(@filename)
     end
@@ -111,6 +113,9 @@ module CapIt
       cmd += " --max-wait=#{@max_wait}"
       cmd += " --delay=#{@delay}" if @delay
       cmd += " --user-agent='#{@user_agent}'"
+      cmd += " --min-width='#{@min_width}'"
+      cmd += " --min-height='#{@min_height}'"
+
       
       if determine_os == :linux
         xvfb = 'xvfb-run --server-args="-screen 99, 1024x768x24" '
