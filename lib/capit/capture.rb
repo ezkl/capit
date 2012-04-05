@@ -117,12 +117,16 @@ module CapIt
       cmd += " --min-height='#{@min_height}'"
 
       
-      if determine_os == :linux and check_xvfb
+      if determine_os == :linux and check_xvfb and not_travis
         xvfb = 'xvfb-run --server-args="-screen 99, 1024x768x24" '
         xvfb.concat(cmd)
       else
         cmd
       end        
+    end
+    
+    def not_travis
+      !ENV.include? "TRAVIS"
     end
     
     def check_xvfb
