@@ -20,6 +20,8 @@ describe CapIt do
         specify { @capit.filename.should == "capit.jpeg" }
         specify { @capit.user_agent.should == "CapIt! [http://github.com/meadvillerb/capit]" }
         specify { @capit.max_wait.should == 15000 }
+        specify { @capit.min_width.should == 1024 }
+        specify { @capit.min_height.should == 768 }
       end
     end
     
