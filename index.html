@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CapIt by ezkl</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>CapIt</h1>
+        <p>CapIt provides a simple Ruby interface to Björn Höhrmann's  CutyCapt </p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/ezkl/capit" class="button fork"><strong>Fork On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/ezkl/capit/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/ezkl/capit/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h2>Install CutyCapt</h2>
+
+<h3>OSX (via Homebrew)</h3>
+
+<pre><code>brew install cuty_capt
+</code></pre>
+
+<h3>Ubuntu &gt;= 11.04 &amp; Debian &gt;= 6.0</h3>
+
+<pre><code>sudo apt-get install xvfb
+sudo apt-get install cutycapt
+</code></pre>
+
+<h3>Other Ubuntu/Debian</h3>
+
+<p>(from <a href="http://daveelkins.com/2009/04/10/setting-up-headless-xserver-and-cutycapt-on-ubuntu/" title="Setting up Headless XServer and CutyCapt on Ubuntu">Setting up Headless XServer and CutyCapt on Ubuntu</a>)</p>
+
+<pre><code>sudo apt-get install xvfb
+sudo apt-get install xfs xfonts-scalable xfonts-100dpi
+sudo apt-get install libgl1-mesa-dri
+sudo apt-get install subversion libqt4-webkit libqt4-dev g++
+svn co <a href="https://cutycapt.svn.sourceforge.net/svnroot/cutycapt">https://cutycapt.svn.sourceforge.net/svnroot/cutycapt</a>
+cd cutycapt/CutyCapt
+qmake
+make
+</code></pre>
+
+<p>You'll also need to make sure the <code>CutyCapt</code> executable is in your PATH.</p>
+
+<h2>Install CapIt</h2>
+
+<pre><code>gem install capit
+</code></pre>
+
+<h2>Usage</h2>
+
+<pre><code>require 'capit'
+capit = CapIt::Capture("<a href="http://www.github.com&quot;">http://www.github.com"</a>)
+# You can also set CutyCapt's path manually if necessary.
+capit = CapIt::Capture("<a href="http://www.github.com">http://www.github.com</a>", :cutycapt_path =&gt; "/sbin/CutyCapt")
+</code></pre>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/ezkl">ezkl</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
