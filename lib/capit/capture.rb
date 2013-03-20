@@ -130,7 +130,9 @@ module CapIt
     end
     
     def determine_cutycapt_path
-      `which CutyCapt`.strip or `which cutycapt`.strip
+      cmd = ["CutyCapt", "cutycapt"].map { |cmd| `which #{cmd}`.strip }.find { |cmd| !cmd.empty? }
+      raise CutyCaptError, "Couldn't find the `CutyCapt` or `cutycapt` command" unless cmd
+      cmd
     end
     
     # Uses RUBY_PLATFORM to determine the operating system.
