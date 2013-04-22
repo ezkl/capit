@@ -61,11 +61,11 @@ describe CapIt do
 
       context "when screen capture is successful" do
         it "returns the full path of the output" do
+          # Travis runs on linux, so you're going to need to stub this for now
+          @capit.stub(:check_xvfb => true)
           # Ensure that we're invoking the shell command, but let's not
           # actually invoke it.
           @capit.should_receive(:`).with(@capit.capture_command).and_return('')
-          # Travis runs on linux, so you're going to need to stub this for now
-          @capit.stub(:check_xvfb => true)
           FileTest.stub(:exists?).with('/tmp/blah/cap_output.png').and_return(true)
 
           @capit.capture.should == '/tmp/blah/cap_output.png'
@@ -75,9 +75,11 @@ describe CapIt do
 
       context "when the screen capture is not successful" do
         it "returns nil" do
-          @capit.should_receive(:`).with(@capit.capture_command).and_return('')
           # Travis runs on linux, so you're going to need to stub this for now
           @capit.stub(:check_xvfb => true)
+          # Ensure that we're invoking the shell command, but let's not
+          # actually invoke it.
+          @capit.should_receive(:`).with(@capit.capture_command).and_return('')
           FileTest.stub(:exists?).with('/tmp/blah/cap_output.png').and_return(false)
 
           @capit.capture.should == nil
