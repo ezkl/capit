@@ -7,3 +7,5 @@ coverage/*
 tmp/*
 .yardoc
 .DS_STORE
+*~
+*.swp
