@@ -2,10 +2,23 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CapIt do  
-  it "should have a Convenience Method" do
-    @folder = setup_temporary_folder
-    @capit = CapIt::Capture("http://mdvlrb.com/", :filename => 'one.test-mdvlrb.png', :folder => @folder).should == @folder + "/one.test-mdvlrb.png"
-    destroy_temporary_folder(@folder)
+  it "provides a Capture method that creates a Capture object and calls `#capture`" do
+    cap_url = cap_opts = nil
+    mock_capture = mock('capture')
+    # Create a mock instead of a real Capture object
+    CapIt::Capture.stub(:new) do |url, opts|
+      cap_url = url
+      cap_opts = opts
+      mock_capture
+    end
+    mock_capture.should_receive(:capture).and_return('sure did')
+
+    CapIt::Capture("http://mdvlrb.com/", :a1 => 'foo', :a2 => 'bar').should == 'sure did'
+    cap_url.should == 'http://mdvlrb.com/'
+    cap_opts.should == {
+      :a1 => 'foo',
+      :a2 => 'bar'
+    }
   end
     
   describe CapIt::Capture do
@@ -40,18 +53,46 @@ describe CapIt do
     
     
     describe "#capture" do
-      before(:all) do
-        @folder = setup_temporary_folder
-        @capture = CapIt::Capture.new("http://mdvlrb.com", :folder => @folder)
+      before do
+        @capit.cutycapt_path = '/usr/local/sbin/cutyCapt'
+        @capit.folder = '/tmp/blah'
+        @capit.filename = 'cap_output.png'
       end
 
       context "when screen capture is successful" do
-        specify { @capture.capture.should == @folder + "/capit.jpeg" }
-        specify { @capture.output.should == @folder + "/capit.jpeg" }
+        it "returns the full path of the output" do
+          # Ensure that we're invoking the shell command, but let's not
+          # actually invoke it.
+          @capit.should_receive(:`).with(@capit.capture_command).and_return('')
+          FileTest.stub(:exists?).with('/tmp/blah/cap_output.png').and_return(true)
+
+          @capit.capture.should == '/tmp/blah/cap_output.png'
+          @capit.output.should == '/tmp/blah/cap_output.png'
+        end
       end
-            
-      after(:all) do
-        destroy_temporary_folder(@folder)
+
+      context "when the screen capture is not successful" do
+        it "returns nil" do
+          @capit.should_receive(:`).with(@capit.capture_command).and_return('')
+          FileTest.stub(:exists?).with('/tmp/blah/cap_output.png').and_return(false)
+
+          @capit.capture.should == nil
+          @capit.output.should == nil
+        end
+
+        it "does not point to a previous capture's output" do
+          # We've tested the precise invocation in other places, we don't
+          # need that here.
+          @capit.stub(:` => '')
+          FileTest.stub(:exists?).with('/tmp/blah/cap_output.png').and_return(true)
+          FileTest.stub(:exists?).with('/tmp/blah/out2.png').and_return(false)
+          @capit.capture.should_not == nil
+          @capit.output.should_not == nil
+
+          @capit.filename = 'out2.png'
+          @capit.capture.should == nil
+          @capit.output.should == nil
+        end
       end
     end
     
@@ -64,25 +105,39 @@ describe CapIt do
     end
     
     describe "#determine_cutycapt_path" do
-      it "should determine the appropriate path for the executable if possible" do
-        @capit.determine_cutycapt_path.should == "/usr/local/bin/CutyCapt"
+      it "looks for CutyCapt in the path" do
+        @capit.stub(:`).with('which CutyCapt').and_return('/usr/local/bin/CutyCapt')
+        @capit.stub(:`).with('which cutycapt').and_return('/usr/bin/cutycapt')
+        @capit.determine_cutycapt_path.should == '/usr/local/bin/CutyCapt'
       end
+
+      it "looks for cutycapt in the path when CutyCapt isn't available" do
+        @capit.stub(:`).with('which CutyCapt').and_return('')
+        @capit.stub(:`).with('which cutycapt').and_return('/usr/bin/cutycapt')
+        @capit.determine_cutycapt_path.should == '/usr/bin/cutycapt'
+      end
+
+      it "may want to do something when a CutyCapt binary isn't found"
     end
     
     describe "#capture_command" do
-      before { @capit = CapIt::Capture.new("http://mdvlrb.com/") }
+      before do
+        # Let's use a very different path to ensure the commands
+        # are being built properly
+        @capit.cutycapt_path = '/opt/bin/cutyCapt'
+      end
       subject { @capit }
     
       context "when platform is Linux" do
         it "should add the xvfb prefix if xvfb-run available" do
-          @capit.stub(:check_xvfb).and_return(:true)
+          @capit.stub(:check_xvfb).and_return(true)
           with_constants :RUBY_PLATFORM => "linux" do
             @capit.capture_command.should match /^xvfb/
           end
         end
         
         it 'should not add the xvfb prefix if xvfb-run not available' do
-          CapIt::Capture.stub(:check_xvfb).and_return(:false)
+          @capit.stub(:check_xvfb).and_return(false)
           with_constants :RUBY_PLATFORM => "linux" do
             @capit.capture_command.should_not match /^xvfb/
           end
@@ -91,8 +146,11 @@ describe CapIt do
     
       context "when platform is Mac" do
         it "should not add the xvfb prefix" do
+          # To ensure that the omission of xvfb is a result of platform
+          # detection and *not* a result of xvfb not being available
+          @capit.stub(:check_xvfb).and_return(true)
           with_constants :RUBY_PLATFORM => "darwin" do 
-            @capit.capture_command.should match /CutyCapt/
+            @capit.capture_command.should match /^\/opt\/bin\/cutyCapt/
           end
         end
       end  

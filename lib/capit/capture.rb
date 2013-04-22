@@ -70,7 +70,17 @@ module CapIt
     #
     def capture      
       `#{capture_command}`
-      successful?
+
+      # Note: builds an extra string (since `output_exists?` also calls
+      # `expected_output_path`) but it'll be just fine for now.
+      if output_exists?
+        @output = expected_output_path
+      else
+        @output = nil
+      end
+      # Not strictly necessary, but I want to make it clear that `capture`
+      # has the same return value as `output`
+      @output
     end
     
     # Overloads #filename= to ensure that filenames have valid extensions.
@@ -98,9 +108,7 @@ module CapIt
     # @return [String, false]
     #
     def successful?
-      if FileTest.exists?("#{@folder}/#{@filename}")
-        @output = "#{@folder}/#{@filename}"
-      end  
+      output_exists? && expected_output_path
     end
     
     # Produces the command used to run CutyCapt. 
@@ -130,7 +138,7 @@ module CapIt
     end
     
     def determine_cutycapt_path
-      `which CutyCapt`.strip or `which cutycapt`.strip
+      which_path('CutyCapt') or which_path('cutycapt')
     end
     
     # Uses RUBY_PLATFORM to determine the operating system.
@@ -145,6 +153,23 @@ module CapIt
         when /linux/i then :linux
         else raise InvalidOSError, "CapIt currently only works on the Mac and Linux platforms"
       end
+    end
+
+  private
+    # A helper to keep `determine_cutycapt_path` simple and to make future
+    # mocking/stubbing needs easier.
+    # TODO: `.strip` call may be superfluous
+    def which_path(bin_name)
+      bin_path = `which #{bin_name}`.strip
+      bin_path.empty? ? nil : bin_path
+    end
+
+    def output_exists?
+      FileTest.exists?(expected_output_path)
+    end
+
+    def expected_output_path
+      File.join(@folder, @filename)
     end
   end
 end
