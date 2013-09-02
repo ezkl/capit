@@ -129,8 +129,12 @@ module CapIt
         xvfb = 'xvfb-run --server-args="-screen 0, 1024x768x24" '
         xvfb.concat(cmd)
       else
-        cmd
-      end        
+        if check_cutycapt
+          cmd
+        else
+          raise "Required package CutyCapt is not installed."
+        end
+      end       
     end
     
     def check_xvfb
